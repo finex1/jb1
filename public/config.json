@@ -35,7 +35,7 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "yU9HL1ZGEE_sdV4HVoBFleH-LNrSW-8XA_Cthtq9iSy18ZO1Yh8mGEMk0gtp0YyBal7QW6neeYRwFNyb4pKaLQn5kwSv50uESjkYTP9wwnOfLlhcfb2CrISJ8DeXgbZ5fSSbgZ4CFIPyRD0sDabKoPK0nGtQZbhVuNBrAO2zESfWO55FubZ61fk5UdNLOVmJJvQgmsM3rL85sispRkdYdx7QPiZySEJCa_381s5NW_O3dMy_zZnggjiQiZwTyw2",
+      "applicationExtensionKey": "d4d34355-18a5-479e-b85f-b65be6be0dfc",
       "save": {
         "url": "https://etapp1.herokuapp.com/journeybuilder/save",
         "verb": "POST",
