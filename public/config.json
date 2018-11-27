@@ -1,0 +1,80 @@
+{
+    "workflowApiVersion": "1.1",
+    "metaData": {
+        "icon": "images/icon.png",
+        "iconSmall": "images/iconSmall.png",
+        "category": "message"
+    },
+    "type": "REST",
+    "lang": {
+        "en-US": {
+           "name": "JB DE Logger",
+           "description": "Used to log customers before exiting a journey",
+		   "JourneyTypeLabel": "Select the journey type",
+		   "entryTypeLabel": "Is it a journey entry or exit DE log",
+		   "objectiveLabel": "Has the journey objective been met or not met",
+		   "reasonLabel": "Add a reason"
+        }
+    },
+    "arguments": {
+        "execute": {
+           "inArguments":[
+				{
+                    "emailAddress": "{{InteractionDefaults.Email}}",
+					"Id": "{{InteractionDefaults.Id}}"
+                }									
+			],
+          "outArguments": [],
+          "url": "https://etapp1.herokuapp.com/journeybuilder/execute",
+           "verb": "POST",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": true,
+            "timeout": 10000
+        }
+    },
+    "configurationArguments": {
+      "applicationExtensionKey": "yU9HL1ZGEE_sdV4HVoBFleH-LNrSW-8XA_Cthtq9iSy18ZO1Yh8mGEMk0gtp0YyBal7QW6neeYRwFNyb4pKaLQn5kwSv50uESjkYTP9wwnOfLlhcfb2CrISJ8DeXgbZ5fSSbgZ4CFIPyRD0sDabKoPK0nGtQZbhVuNBrAO2zESfWO55FubZ61fk5UdNLOVmJJvQgmsM3rL85sispRkdYdx7QPiZySEJCa_381s5NW_O3dMy_zZnggjiQiZwTyw2",
+      "save": {
+        "url": "https://etapp1.herokuapp.com/journeybuilder/save",
+          "verb": "POST",
+        "useJwt": true
+       },
+       "publish": {
+        "url": "https://etapp1.herokuapp.com/journeybuilder/publish",
+           "verb": "POST",
+        "useJwt": true
+       },
+      "stop": {
+        "url": "https://etapp1.herokuapp.com/journeybuilder/stop",
+           "verb": "POST",
+        "useJwt": true
+      },
+      "validate": {
+        "url": "https://etapp1.herokuapp.com/journeybuilder/validate",
+        "verb": "POST",
+        "useJwt": true
+      }
+    },
+    ",
+    "wizardSteps": [
+       { "label": "Step 1", "key": "step1" },
+       { "label": "Step 2", "key": "step2" }       
+    ],
+    "userInterfaces": {
+        "configModal": {
+            "height": 400,
+            "width": 1000,
+          "fullscreen": false
+        }
+    },
+    "schema": {
+        "arguments": {
+            "execute": {
+                "inArguments": [],
+                "outArguments": []
+            }
+        }
+    }
+}
