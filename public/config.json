@@ -20,8 +20,7 @@
         "execute": {
            "inArguments":[
 				{
-                    "emailAddress": "{{InteractionDefaults.Email}}",
-					"Id": "{{InteractionDefaults.Id}}"
+                    "emailAddress": "{{InteractionDefaults.Email}}"
                 }									
 			],
           "outArguments": [],
