@@ -20,7 +20,8 @@
         "execute": {
            "inArguments":[
 				{
-                    "emailAddress": "{{InteractionDefaults.Email}}"
+                    "emailAddress": "{{InteractionDefaults.Email}}",
+					"Id": "{{InteractionDefaults.Id}}"
                 }									
 			],
           "outArguments": [],
@@ -55,8 +56,7 @@
         "verb": "POST",
         "useJwt": true
       }
-    },
-    ",
+    },    
     "wizardSteps": [
        { "label": "Step 1", "key": "step1" },
        { "label": "Step 2", "key": "step2" }       
