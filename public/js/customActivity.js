@@ -7,6 +7,7 @@ define([
 
     var connection = new Postmonger.Session();
     var authTokens = {};
+	var schemas ={};
     var payload = {};
 	var eventDefinitionKey;
     $(window).ready(onRender);
@@ -14,6 +15,7 @@ define([
     connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
+	connection.on('requestedSchema',onRequestedSchema);
 	connection.on('requestedTriggerEventDefinition',
 		function(eventDefinitionModel) {
 			if(eventDefinitionModel){
@@ -79,6 +81,9 @@ define([
         authTokens = tokens;
     }
 
+	function onRequestedSchema(schema){
+		schemas = schema;
+	}
     function onGetEndpoints(endpoints) {
         console.log(endpoints);
     }
@@ -106,7 +111,8 @@ define([
 		"tokens":authTokens,
 		"dataExtensionId":"testjourneylog",
 		"emailAddress": "{{Contact.Default.Email}}",
-		"Id": "{{Event."+ eventDefinitionKey+".\"Id\"}}",
+		"Id": eventDefinitionKey,
+		"schemas":schemas;
 		}];
 
         payload['metaData'].isConfigured = true;
