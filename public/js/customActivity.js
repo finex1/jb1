@@ -120,8 +120,8 @@ function(eventDefinitionModel) {
 		"tokens":authTokens,
 		"dataExtensionId":"testjourneylog",
 		"emailAddress": "{{Contact.Default.Email}}",
-		"Id": eventDefinitionKey,
-		"schemas":schemas
+		"Id": "{{Event." + eventDefinitionKey+".\"Id\"}}",
+		"AccountID":"{{Event." + eventDefinitionKey+".\"AccountId\"}}",
 		}];
 
         payload['metaData'].isConfigured = true;
