@@ -16,12 +16,7 @@ define([
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
 	connection.on('requestedSchema',onRequestedSchema);
-	connection.on('requestedTriggerEventDefinition',
-		function(eventDefinitionModel) {
-			if(eventDefinitionModel){
-			   eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-			}
-		});
+	
 
     connection.on('clickedNext', save);
    
@@ -74,6 +69,20 @@ define([
             text: 'done',
             visible: true
         });
+		connection.trigger('requestTriggerEventDefinition');
+
+connection.on('requestedTriggerEventDefinition',
+function(eventDefinitionModel) {
+    if(eventDefinitionModel){
+
+        eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+        console.log(">>>Event Definition Key " + eventDefinitionKey);
+        /*If you want to see all*/
+        console.log('>>>Request Trigger', 
+        JSON.stringify(eventDefinitionModel));
+    }
+
+});
     }
 
     function onGetTokens(tokens) {
