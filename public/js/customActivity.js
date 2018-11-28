@@ -8,6 +8,7 @@ define([
     var connection = new Postmonger.Session();
     var authTokens = {};
     var payload = {};
+	var eventDefinitionKey;
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -85,6 +86,22 @@ define([
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
       payload.name = filledform.journeytype+" "+filledform.entrytype+" "+filledform.objective;
+	  
+	  
+	  /*******************************/
+	  connection.on('requestedTriggerEventDefinition',
+		function(eventDefinitionModel) {
+			if(eventDefinitionModel){
+
+				eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+				console.log(">>>Event Definition Key " + eventDefinitionKey);
+				/*If you want to see all*/
+				console.log('>>>Request Trigger', 
+				JSON.stringify(eventDefinitionModel));
+			}
+
+		});
+	  /******************************/
 		
 		payload['arguments'].execute.inArguments = [{ 
 		"journeytype": filledform.journeytype,
@@ -93,7 +110,8 @@ define([
 		"reason": filledform.reason,
 		"tokens":authTokens,
 		"dataExtensionId":"testjourneylog",
-		"emailAddress": "{{Contact.Default.Email}}"
+		"emailAddress": "{{Contact.Default.Email}}",
+		"Id": "{{Contact.Attribute."+ eventDefinitionKey+".\"Id\"}}",
 		}];
 
         payload['metaData'].isConfigured = true;
