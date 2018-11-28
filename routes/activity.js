@@ -88,9 +88,18 @@ console.log( req.body );
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
-			console.log( "decoded args started" );
-            console.log( decodedArgs );
-			console.log( "decoded args ends" );
+			
+			
+			var request = require('request');
+			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
+			request({url:url,
+					method:POST,
+					json:decoded.inArguments[0]}, function (error, response, body) {
+			  if (!error) {
+				console.log(body);
+			  }
+			});
+			
             logData(req);
             res.send(200, 'Execute');
         } else {
