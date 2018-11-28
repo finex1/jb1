@@ -6,7 +6,9 @@
     "node": "6.11.1"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "node_modules/.bin/eslint .",
+    "test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,12 @@
     "errorhandler": "^1.5.0",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.0.1",
-    "request": "^2.81.0",
-    "require": "^2.4.20"
+    "require": "^2.4.20",
+    "fuel-auth": "^3.1.0",
+    "fuel-rest": "^3.1.0",
+    "fuel-soap": "^2.1.0",
+    "lodash.merge": "^4.6.1",
+    "request": "^2.88.0",
+    "uuid": "^3.3.2"
   }
 }
