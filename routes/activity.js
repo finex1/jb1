@@ -116,9 +116,6 @@ exports.execute = function (req, res) {
 						assert.equal(response.res.statusCode, 200);
 						assert.equal(response.body.Results.length, 1);
 						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
-						done();
-					});
-				});
 /*******************************************************************************************/
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
@@ -135,6 +132,10 @@ exports.execute = function (req, res) {
             res.send(200, 'Execute');
 			
 /*******************************************************************************************/
+						done();
+					});
+				});
+
 				it('should error 404 if random id is passed', done => {
 					const filter = {
 						leftOperand: 'CustomerKey',
