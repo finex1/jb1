@@ -112,7 +112,7 @@ define([
 		"dataExtensionId":"testjourneylog",
 		"emailAddress": "{{Contact.Default.Email}}",
 		"Id": eventDefinitionKey,
-		"schemas":schemas;
+		"schemas":schemas
 		}];
 
         payload['metaData'].isConfigured = true;
