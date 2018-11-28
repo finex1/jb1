@@ -14,6 +14,12 @@ define([
     connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
+	connection.on('requestedTriggerEventDefinition',
+		function(eventDefinitionModel) {
+			if(eventDefinitionModel){
+			   eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+			}
+		});
 
     connection.on('clickedNext', save);
    
@@ -89,18 +95,7 @@ define([
 	  
 	  
 	  /*******************************/
-	  connection.on('requestedTriggerEventDefinition',
-		function(eventDefinitionModel) {
-			if(eventDefinitionModel){
-
-				eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-				console.log(">>>Event Definition Key " + eventDefinitionKey);
-				/*If you want to see all*/
-				console.log('>>>Request Trigger', 
-				JSON.stringify(eventDefinitionModel));
-			}
-
-		});
+	
 	  /******************************/
 		
 		payload['arguments'].execute.inArguments = [{ 
@@ -111,7 +106,7 @@ define([
 		"tokens":authTokens,
 		"dataExtensionId":"testjourneylog",
 		"emailAddress": "{{Contact.Default.Email}}",
-		"Id": "{{Contact.Attribute."+ eventDefinitionKey+".\"Id\"}}",
+		"Id": "{{Event."+ eventDefinitionKey+".\"Id\"}}",
 		}];
 
         payload['metaData'].isConfigured = true;
