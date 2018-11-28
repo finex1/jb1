@@ -92,7 +92,9 @@ define([
 		"objective": filledform.objective,
 		"reason": filledform.reason,
 		"tokens":authTokens,
-		"dataExtensionId":"testjourneylog"
+		"dataExtensionId":"testjourneylog",
+		"emailAddress": "{{InteractionDefaults.Email}}",
+		"Id": "{{InteractionDefaults.Id}}"
 		}];
 
         payload['metaData'].isConfigured = true;
