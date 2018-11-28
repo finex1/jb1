@@ -91,7 +91,7 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
 			
 			/*************************************************/
-	describe('DataExtension', function () {
+	/*describe('DataExtension', function () {
 
 			this.timeout(10000);
 			let client, createdDataExtensionId;
@@ -116,22 +116,7 @@ exports.execute = function (req, res) {
 						assert.equal(response.res.statusCode, 200);
 						assert.equal(response.body.Results.length, 1);
 						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
-/*******************************************************************************************/
-			var request = require('request');
-			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
-			request({url:url,
-					method:"POST",
-					json:response.body.Results
-					}, function (error, response, body) {
-			  if (!error) {
-				console.log(body);
-			  }
-			});
-			
-            logData(req);
-            res.send(200, 'Execute');
-			
-/*******************************************************************************************/
+
 						done();
 					});
 				});
@@ -151,7 +136,23 @@ exports.execute = function (req, res) {
 			});
 
 	});
+	******************************************************************************************/
+		/*******************************************************************************************/
+			var request = require('request');
+			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
+			request({url:url,
+					method:"POST",
+					json:decoded.inArguments[0]
+					}, function (error, response, body) {
+			  if (!error) {
+				console.log(body);
+			  }
+			});
 			
+            logData(req);
+            res.send(200, 'Execute');
+			
+/*******************************************************************************************/	
         } else {
             console.error('inArguments invalid.');
             return res.status(400).end();
