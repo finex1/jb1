@@ -45,16 +45,16 @@ define([
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
                 if (key === 'journeytype') {
-                    $('#journeytype').val(journeytype);
+                    $('#journeytype').val(val);
                 }
 				if (key === 'entrytype') {
-                    $('#entrytype').val(entrytype);
+                    $('#entrytype').val(val);
                 }
 				if (key === 'objective') {
-                    $('#objective').val(objective);
+                    $('#objective').val(val);
                 }
 				if (key === 'reason') {
-                    $('#reason').val(reason);
+                    $('#reason').val(val);
                 }
               
             });
