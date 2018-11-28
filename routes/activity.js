@@ -72,15 +72,7 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
-var request = require('request');
-			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
-			request({url:url,
-					method:"POST",
-					json:req.body}, function (error, response, body) {
-			  if (!error) {
-				console.log(body);
-			  }
-			});
+
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
@@ -100,7 +92,9 @@ var request = require('request');
 			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
 			request({url:url,
 					method:"POST",
-					json:decoded.inArguments[0]}, function (error, response, body) {
+					json:decoded.inArguments[0],
+					body:decoded.inArguments.length
+					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
 			  }
