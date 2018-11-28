@@ -1,5 +1,8 @@
 'use strict';
 var util = require('util');
+const assert = require('assert');
+const {clientId, clientSecret, origin, authOrigin, globalReqOptions} = require('./test.config');
+const ET_Client = require('../lib/ET_Client');
 
 // Deps
 const Path = require('path');
@@ -87,12 +90,41 @@ exports.execute = function (req, res) {
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
 			
+			/*************************************************/
+	describe('DataExtension', function () {
+
+			this.timeout(10000);
+			let client, createdDataExtensionId;
+			createdDataExtensionId = "testjourneylog";
+
+			before(() => {
+				client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
+			});
+
 			
+
+			describe('Get', () => {
+				const props = ['CustomerKey'];
+				it('should get it if createdDataExtensionId is passed', done => {
+					const filter = {
+						leftOperand: 'CustomerKey',
+						operator: 'equals',
+						rightOperand: createdDataExtensionId
+					};
+					client.dataExtension({props, filter}).get((err, response) => {
+						if (err) throw new Error(err);
+						assert.equal(response.res.statusCode, 200);
+						assert.equal(response.body.Results.length, 1);
+						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
+						done();
+					});
+				});
+/*******************************************************************************************/
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
 			request({url:url,
 					method:"POST",
-					json:decoded.inArguments
+					json:response.body.Results
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
@@ -101,6 +133,24 @@ exports.execute = function (req, res) {
 			
             logData(req);
             res.send(200, 'Execute');
+			
+/*******************************************************************************************/
+				it('should error 404 if random id is passed', done => {
+					const filter = {
+						leftOperand: 'CustomerKey',
+						operator: 'equals',
+						rightOperand: createdDataExtensionId
+					};
+					client.dataExtension({props, filter}).get((err, response) => {
+						if (err) throw new Error(err);
+						assert.equal(response.body.Results.length, 0);
+						done();
+					});
+				});
+			});
+
+	});
+			
         } else {
             console.error('inArguments invalid.');
             return res.status(400).end();
