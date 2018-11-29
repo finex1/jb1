@@ -88,8 +88,38 @@ exports.execute = function (req, res) {
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
             // decoded in arguments
-            var decodedArgs = decoded.inArguments[0];
+			var Objective_not_met = false;
+			var Objective_met = false;
+			var ExitUpdateType = false;
+			var EntryUpdateType = false;
+			var EntryUpdateDate = "";
+			var UpdateDate ="";
+			var UpdateType ="";
+			var ExitUpdateDate = ""
+			var objective = "";
+			var d = new Date();
+			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
 			
+            var decodedArgs = decoded.inArguments[0];
+			if (decodedArgs.objective == "met"){
+				Objective_met = true;
+				 objective = "'Objective_met':"+ Objective_met;
+			}else if(decodedArgs.objective == "notmet"){
+				Objective_not_met = true;
+				objective = "'Objective_not_met':"+ Objective_not_met,
+			}
+			
+			if (decodedArgs.entrytype == "entry"){
+				EntryUpdateType = true;
+				EntryUpdateDate = z;
+				UpdateType = "'EntryUpdateType':"+ EntryUpdateType;
+				UpdateDate = "'EntryUpdateDate':"+ EntryUpdateDate;
+			}else if(decodedArgs.entrytype == "exit"){
+				ExitUpdateType = true;
+				ExitUpdateDate = z;
+				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
+				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
+			}
 			/*************************************************/
 	/*describe('DataExtension', function () {
 
@@ -154,14 +184,45 @@ exports.execute = function (req, res) {
 					});
 	******************************************************************************************/
 		/*******************************************************************************************/
-		
-			
+			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
+			var contentType = 'application/json';
+			var payload = {
+					clientId: process.env.ID,
+					clientSecret: process.env.SECRET
+			};
+			var accessTokenRequest = HTTP.Post(Authurl, contentType, Stringify(payload));
+			if(accessTokenRequest.StatusCode == 200) {
+				var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
+				var accessToken = tokenResponse.accessToken;	
+				var UpdateDE = {};
+				if (accessToken != '' || accessToken != 'undefined'){
+					var APIurl = 'https://www.exacttargetapis.com//hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset';
+					var contentType = 'application/json';
+					var payload =  {
+								"keys":{
+										"Id": decodedArgs.Id
+										},
+								"values":{
+										"AccountID": decodedArgs.AccountID,
+										"Journeyid": decodedArgs.definitionId,
+										objective,
+										"Reason": decodedArgs.Reason,
+										UpdateType,
+										UpdateDate,
+										"journeytype": decodedArgs.journeytype
+										}
+								};
+					var headerNames = ["Authorization"];
+					var headerValues = ["Bearer "+accessToken];
+					 updateDE = HTTP.Post(APIurl, contentType, Stringify(payload), headerNames, headerValues);			
+				}	
+			}
 			
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:decoded.inArguments[0]
+					json:UpdateDE
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
