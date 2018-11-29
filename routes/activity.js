@@ -228,12 +228,12 @@ exports.execute = function (req, res) {
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
 			}*/
-			
+			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
 			
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					body:accessTokenRequest
+					JSON:client
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
