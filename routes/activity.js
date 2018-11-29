@@ -190,7 +190,7 @@ exports.execute = function (req, res) {
 					clientId: process.env.ID,
 					clientSecret: process.env.SECRET
 			};
-			var accessTokenRequest = HTTP.Post(Authurl, contentType, Stringify(payload));
+			var accessTokenRequest = HTTP.Post(Authurl, contentType, JSON.stringify(payload));
 			if(accessTokenRequest.StatusCode == 200) {
 				var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
 				var accessToken = tokenResponse.accessToken;	
@@ -214,7 +214,7 @@ exports.execute = function (req, res) {
 								};
 					var headerNames = ["Authorization"];
 					var headerValues = ["Bearer "+accessToken];
-					 updateDE = HTTP.Post(APIurl, contentType, Stringify(payload), headerNames, headerValues);			
+					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
 			}
 			
