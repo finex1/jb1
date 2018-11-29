@@ -190,12 +190,13 @@ exports.execute = function (req, res) {
 					clientId: process.env.ID,
 					clientSecret: process.env.SECRET
 			};
-			var accessTokenRequest = request({url:Authurl,
+			var accessTokenRequest = {}
+			request({url:Authurl,
 					method:"POST",
 					json:payload
 					}, function (error, response, body) {
 			  if (!error) {
-				console.log(body);
+				accessTokenRequest = body;
 			  }
 			});
 			/*
