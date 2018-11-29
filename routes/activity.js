@@ -1,16 +1,14 @@
 'use strict';
 
+const assert = require('assert');
+const {clientId, clientSecret, origin, authOrigin, globalReqOptions} = require('./test.config');
+const ET_Client = require('../lib/ET_Client');
 
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
-
-const assert = require('assert');
-const {clientId, clientSecret, origin, authOrigin, globalReqOptions} = require('./test.config');
-const ET_Client = require(Path.join(__dirname, '..', 'lib', 'ET_Client.js');
-
 
 exports.logExecuteData = [];
 
@@ -143,7 +141,6 @@ exports.execute = function (req, res) {
 		
 			const client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 			const createdDataExtensionId = "testjourneylog";
-			const props = ['CustomerKey'];
 			var Args 
 				const filter = {
 						leftOperand: 'CustomerKey',
