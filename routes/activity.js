@@ -190,7 +190,15 @@ exports.execute = function (req, res) {
 					clientId: process.env.ID,
 					clientSecret: process.env.SECRET
 			};
-			var accessTokenRequest = HTTP.Post(Authurl, contentType, JSON.stringify(payload));
+			var accessTokenRequest = request({url:Authurl,
+					method:"POST",
+					json:payload
+					}, function (error, response, body) {
+			  if (!error) {
+				console.log(body);
+			  }
+			});
+			/*
 			if(accessTokenRequest.StatusCode == 200) {
 				var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
 				var accessToken = tokenResponse.accessToken;	
@@ -216,13 +224,13 @@ exports.execute = function (req, res) {
 					var headerValues = ["Bearer "+accessToken];
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
-			}
+			}*/
 			
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:updateDE
+					json:accessTokenRequest
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
