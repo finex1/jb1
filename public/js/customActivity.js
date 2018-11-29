@@ -128,7 +128,7 @@ connection.on('requestedInteraction', function(interaction) {
 		"objective": filledform.objective,
 		"reason": filledform.reason,
 		"tokens":authTokens,
-		"dataExtensionId":"testjourneylog",
+		"dataExtensionId":"Journey_Logs",
 		"emailAddress": "{{Contact.Default.Email}}",
 		"Id": "{{Event." + eventDefinitionKey+".\"Id\"}}",
 		"AccountID":"{{Event." + eventDefinitionKey+".\"AccountId\"}}",
