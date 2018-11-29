@@ -70,6 +70,7 @@ define([
             visible: true
         });
 		connection.trigger('requestTriggerEventDefinition');
+		connection.trigger('requestInteraction');
 
 connection.on('requestedTriggerEventDefinition',
 function(eventDefinitionModel) {
@@ -82,6 +83,13 @@ function(eventDefinitionModel) {
         JSON.stringify(eventDefinitionModel));
     }
 
+});
+
+connection.on('requestedInteraction', function(interaction) { 
+	if(interaction){
+		console.log('>>>Request interaction', 
+        JSON.stringify(interaction));
+	}
 });
     }
 
@@ -122,6 +130,7 @@ function(eventDefinitionModel) {
 		"emailAddress": "{{Contact.Default.Email}}",
 		"Id": "{{Event." + eventDefinitionKey+".\"Id\"}}",
 		"AccountID":"{{Event." + eventDefinitionKey+".\"AccountId\"}}",
+		"definitionId": "{{Context.DefinitionId}}",
 		}];
 
         payload['metaData'].isConfigured = true;
