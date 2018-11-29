@@ -101,14 +101,14 @@ exports.execute = function (req, res) {
 			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
 			
             var decodedArgs = decoded.inArguments[0];
-			/**if (decodedArgs.objective == "met"){
+			if (decodedArgs.objective == "met"){
 				Objective_met = true;
 				 objective = "'Objective_met':"+ Objective_met;
 			}else if(decodedArgs.objective == "notmet"){
 				Objective_not_met = true;
-				objective = "'Objective_not_met':"+ Objective_not_met,
+				objective = "'Objective_not_met':"+ Objective_not_met;
 			}
-			
+		
 			if (decodedArgs.entrytype == "entry"){
 				EntryUpdateType = true;
 				EntryUpdateDate = z;
@@ -120,7 +120,7 @@ exports.execute = function (req, res) {
 				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
 				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
 			}
-			***********************************************/
+				/*************************************************/
 	/*describe('DataExtension', function () {
 
 			this.timeout(10000);
