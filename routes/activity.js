@@ -222,7 +222,7 @@ exports.execute = function (req, res) {
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:decoded.inArguments[0]
+					json:updateDE
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
