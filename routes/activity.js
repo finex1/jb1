@@ -138,6 +138,25 @@ exports.execute = function (req, res) {
 	});
 	******************************************************************************************/
 		/*******************************************************************************************/
+		before(() => {
+			const client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
+			});
+			const createdDataExtensionId = "testjourneylog";
+			const props = ['CustomerKey'];
+				const filter = {
+						leftOperand: 'CustomerKey',
+						operator: 'equals',
+						rightOperand: createdDataExtensionId
+					};
+					client.dataExtension({props, filter}).get((err, response) => {
+						if (err) throw new Error(err);
+						assert.equal(response.res.statusCode, 200);
+						assert.equal(response.body.Results.length, 1);
+						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
+decoded.inArguments[0].emailaddress = assert.equal(response.body.Results.length, 1);
+						done();
+					});
+			
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
 			request({url:url,
