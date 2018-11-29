@@ -10,6 +10,7 @@ define([
 	var schemas ={};
     var payload = {};
 	var eventDefinitionKey;
+	var definitionId;
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -87,8 +88,9 @@ function(eventDefinitionModel) {
 
 connection.on('requestedInteraction', function(interaction) { 
 	if(interaction){
-		console.log('>>>Request interaction', 
-        JSON.stringify(interaction));
+		
+		definitionId = interaction.definitionId;
+		console.log(definitionId);
 	}
 });
     }
