@@ -1,14 +1,16 @@
 'use strict';
-var util = require('util');
-const assert = require('assert');
-const {clientId, clientSecret, origin, authOrigin, globalReqOptions} = require('./test.config');
-const ET_Client = require('../lib/ET_Client');
+
 
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
+
+const assert = require('assert');
+const {clientId, clientSecret, origin, authOrigin, globalReqOptions} = require('./test.config');
+const ET_Client = require(Path.join(__dirname, '..', 'lib', 'ET_Client.js');
+
 
 exports.logExecuteData = [];
 
@@ -152,7 +154,7 @@ exports.execute = function (req, res) {
 						assert.equal(response.res.statusCode, 200);
 						assert.equal(response.body.Results.length, 1);
 						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
-decoded.inArguments[0].emailaddress = assert.equal(response.body.Results.length, 1);
+decoded.inArguments[0].emailAddress = assert.equal(response.body.Results.length, 1);
 						done();
 					});
 			
