@@ -136,10 +136,7 @@ exports.execute = function (req, res) {
 			});
 
 	});
-	******************************************************************************************/
-		/*******************************************************************************************/
-		
-			const client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
+	const client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 			const createdDataExtensionId = "testjourneylog";
 			var Args 
 				const filter = {
@@ -155,12 +152,16 @@ exports.execute = function (req, res) {
 						Args   = response.body.Results.length
 						done();
 					});
+	******************************************************************************************/
+		/*******************************************************************************************/
+		
+			
 			
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:Args
+					json:decoded.inArguments[0]
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
