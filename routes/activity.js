@@ -191,13 +191,14 @@ exports.execute = function (req, res) {
 					clientSecret: process.env.SECRET
 			};
 			var accessTokenRequest = {};
-			request({url:Authurl,
-					method:"POST",
-					json:payload
-					}, function (error, response, body) {
-			  if (!error) {
-				accessTokenRequest = body;
-			  }
+			var data = {
+				url: Authurl,
+				json: true,
+				body: JSON.stringify(payload)
+			}
+
+			request.post(data, function(error, httpResponse, body){
+				accessTokenRequest = httpResponse;
 			});
 			/*
 			if(accessTokenRequest.StatusCode == 200) {
