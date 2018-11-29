@@ -101,7 +101,7 @@ exports.execute = function (req, res) {
 			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
 			
             var decodedArgs = decoded.inArguments[0];
-			if (decodedArgs.objective == "met"){
+			/**if (decodedArgs.objective == "met"){
 				Objective_met = true;
 				 objective = "'Objective_met':"+ Objective_met;
 			}else if(decodedArgs.objective == "notmet"){
@@ -120,7 +120,7 @@ exports.execute = function (req, res) {
 				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
 				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
 			}
-			/*************************************************/
+			***********************************************/
 	/*describe('DataExtension', function () {
 
 			this.timeout(10000);
