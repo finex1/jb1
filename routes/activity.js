@@ -183,7 +183,7 @@ exports.execute = function (req, res) {
 						done();
 					});
 	******************************************************************************************/
-		/*******************************************************************************************/
+		/******************************************************************************************
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
 			var contentType = 'application/json';
 			var payload = {
@@ -194,7 +194,7 @@ exports.execute = function (req, res) {
 			if(accessTokenRequest.StatusCode == 200) {
 				var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
 				var accessToken = tokenResponse.accessToken;	
-				var UpdateDE = {};
+				var updateDE = {};
 				if (accessToken != '' || accessToken != 'undefined'){
 					var APIurl = 'https://www.exacttargetapis.com//hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset';
 					var contentType = 'application/json';
@@ -217,12 +217,12 @@ exports.execute = function (req, res) {
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
 			}
-			
+			*/
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:UpdateDE
+					json:decoded.inArguments[0]
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
