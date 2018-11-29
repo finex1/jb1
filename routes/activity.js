@@ -183,7 +183,7 @@ exports.execute = function (req, res) {
 						done();
 					});
 	******************************************************************************************/
-		/******************************************************************************************
+		/*******************************************************************************************/
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
 			var contentType = 'application/json';
 			var payload = {
@@ -217,7 +217,7 @@ exports.execute = function (req, res) {
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
 			}
-			*/
+			
 			var request = require('request');
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
