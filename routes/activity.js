@@ -191,7 +191,7 @@ exports.execute = function (req, res) {
 					clientId: process.env.ID,
 					clientSecret: process.env.SECRET
 			};
-			var accessTokenRequest = {};
+			var accessTokenRequest = "";
 			var data = {
 				url: Authurl,
 				json: true,
@@ -233,7 +233,7 @@ exports.execute = function (req, res) {
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:payload
+					body:accessTokenRequest
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
