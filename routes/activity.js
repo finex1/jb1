@@ -184,6 +184,7 @@ exports.execute = function (req, res) {
 					});
 	******************************************************************************************/
 		/*******************************************************************************************/
+		var request = require('request');
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
 			var contentType = 'application/json';
 			var payload = {
@@ -198,7 +199,7 @@ exports.execute = function (req, res) {
 			}
 
 			request.post(data, function(error, httpResponse, body){
-				accessTokenRequest = httpResponse;
+				accessTokenRequest = body;
 			});
 			/*
 			if(accessTokenRequest.StatusCode == 200) {
@@ -228,7 +229,7 @@ exports.execute = function (req, res) {
 				}	
 			}*/
 			
-			var request = require('request');
+			
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
