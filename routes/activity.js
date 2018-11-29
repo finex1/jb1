@@ -144,6 +144,7 @@ exports.execute = function (req, res) {
 			const client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 			const createdDataExtensionId = "testjourneylog";
 			const props = ['CustomerKey'];
+			var Args 
 				const filter = {
 						leftOperand: 'CustomerKey',
 						operator: 'equals',
@@ -154,15 +155,15 @@ exports.execute = function (req, res) {
 						assert.equal(response.res.statusCode, 200);
 						assert.equal(response.body.Results.length, 1);
 						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
-decoded.inArguments[0].emailAddress = assert.equal(response.body.Results.length, 1);
+						Args   = response.body.Results.length
 						done();
 					});
 			
 			var request = require('request');
-			var url ='http://requestbin.fullcontact.com/1kuvi6e1'
+			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					json:decoded.inArguments[0]
+					json:Args
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
