@@ -198,11 +198,11 @@ exports.execute = function (req, res) {
 				if (accessToken != '' || accessToken != 'undefined'){
 					var APIurl = 'https://www.exacttargetapis.com//hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset';
 					var contentType = 'application/json';
-					var payload =  {{
-								keys:[
+					var payload = [ {
+								"keys":{
 										"Id": decodedArgs.Id
-										],
-								values:[
+										},
+								"values":{
 										"AccountID": decodedArgs.AccountID,
 										"Journeyid": decodedArgs.definitionId,
 										objective,
@@ -210,8 +210,8 @@ exports.execute = function (req, res) {
 										UpdateType,
 										UpdateDate,
 										"journeytype": decodedArgs.journeytype
-										]
-					}};
+										}
+								}];
 					var headerNames = ["Authorization"];
 					var headerValues = ["Bearer "+accessToken];
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
