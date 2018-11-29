@@ -195,7 +195,7 @@ exports.execute = function (req, res) {
 			var data = {
 				url: Authurl,
 				json: true,
-				body: JSON.stringify(payload)
+				body: payload
 			}
 
 			request.post(data, function(error, httpResponse, body){
