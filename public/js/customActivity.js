@@ -132,7 +132,7 @@ connection.on('requestedInteraction', function(interaction) {
 		"emailAddress": "{{Contact.Default.Email}}",
 		"Id": "{{Event." + eventDefinitionKey+".\"Id\"}}",
 		"AccountID":"{{Event." + eventDefinitionKey+".\"AccountId\"}}",
-		"definitionId": "{{Context.DefinitionId}}",
+		"definitionId": definitionId,
 		}];
 
         payload['metaData'].isConfigured = true;
