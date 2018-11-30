@@ -161,28 +161,24 @@ exports.execute = function (req, res) {
 
 			const RestClient = new FuelRest(options);
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
-			var contentType = 'application/json';
 			var payload = {
 					clientId: process.env.ID,
 					clientSecret: process.env.SECRET
 			};
 			var accessTokenRequest = {};
-			var data = {
-				url: Authurl,
-				json: true,
-				body: payload
-			}
+			
 
-			request.post(data, function(error, httpResponse, body){
-				accessTokenRequest = body;
-			});	
+			var accesstoken = request.post({
+			   uri: Authurl,
+			   json: payload
+			});
 			
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
-			json: accessTokenRequest
+			json: accesstoken
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
