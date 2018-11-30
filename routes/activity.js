@@ -156,7 +156,7 @@ exports.execute = function (req, res) {
 					clientId: clientId,
 					clientSecret: clientSecret
 				},
-				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
+				origin: 'https://www.exacttargetapis.com' // default --> https://www.exacttargetapis.com
 			};
 
 			const RestClient = new FuelRest(options);
