@@ -155,7 +155,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: updateDE
+			json: props
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
