@@ -90,12 +90,45 @@ exports.execute = function (req, res) {
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
 			
+			/**/var Objective_not_met = false;
+			var Objective_met = false;
+			var ExitUpdateType = false;
+			var EntryUpdateType = false;
+			var EntryUpdateDate = "";
+			var UpdateDate ="";
+			var UpdateType ="";
+			var ExitUpdateDate = "";
+			var objective = "";
+			var d = new Date();
+			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
+			
+           
+			if (decodedArgs.objective == "met"){
+				Objective_met = true;
+				 objective = "'Objective_met':"+ Objective_met;
+			}else if(decodedArgs.objective == "notmet"){
+				Objective_not_met = true;
+				objective = "'Objective_not_met':"+ Objective_not_met;
+			}
+		
+			if (decodedArgs.entrytype == "entry"){
+				EntryUpdateType = true;
+				EntryUpdateDate = z;
+				UpdateType = "'EntryUpdateType':"+ EntryUpdateType;
+				UpdateDate = "'EntryUpdateDate':"+ EntryUpdateDate;
+			}else if(decodedArgs.entrytype == "exit"){
+				ExitUpdateType = true;
+				ExitUpdateDate = z;
+				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
+				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
+			}																				/**/
+			
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4'
 			request({
 			url:url,
 			method:"POST",
-			json: decoded.inArguments[0]
+			json: decodedArgs
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
