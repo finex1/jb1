@@ -183,8 +183,9 @@ exports.execute = function (req, res) {
 						done();
 					});
 	******************************************************************************************/
-		/******************************************************************************************
 		var request = require('request');
+		/******************************************************************************************
+		
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
 			var contentType = 'application/json';
 			var payload = {
