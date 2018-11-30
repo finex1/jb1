@@ -136,12 +136,12 @@ exports.execute = function (req, res) {
 				Journeyid: decodedArgs.definitionId
             };
 			test ="before api";
-            client.dataExtensionRow({Name, props}).post((err, response) => {
+            updateDE = client.dataExtensionRow({Name, props}).post((err, response) => {
 				test ="before error";
                 if (err) throw new Error(err);
                 assert.equal(response.res.statusCode, 200);
-				test = "after error reponse";
-				updateDE = response;
+				//test = "after error reponse";
+				
                
             });
 			
@@ -155,7 +155,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: payload
+			json: updateDE
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
