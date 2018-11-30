@@ -126,6 +126,7 @@ exports.execute = function (req, res) {
 			
 			
 			var updateDE = {};
+			var test = "";
 			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
 			
 			const Name = decodedArgs.dataExtensionId;
@@ -135,8 +136,10 @@ exports.execute = function (req, res) {
 				Journeyid: decodedArgs.definitionId
             };
             client.dataExtensionRow({Name, props}).post((err, response) => {
+				test ="before error";
                 if (err) throw new Error(err);
                 assert.equal(response.res.statusCode, 200);
+				test = "after error reponse";
 				updateDE = response;
                
             });
@@ -147,7 +150,7 @@ exports.execute = function (req, res) {
 			};
 			
 			var request = require('request');
-			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+decodedArgs.AccountID
+			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
