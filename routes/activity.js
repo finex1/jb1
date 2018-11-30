@@ -95,7 +95,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: decodedArgs
+			json: decoded.inArguments[0]
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
