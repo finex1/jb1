@@ -135,6 +135,7 @@ exports.execute = function (req, res) {
 				AccountID: decodedArgs.AccountID,
 				Journeyid: decodedArgs.definitionId
             };
+			test ="before api";
             client.dataExtensionRow({Name, props}).post((err, response) => {
 				test ="before error";
                 if (err) throw new Error(err);
