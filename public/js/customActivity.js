@@ -11,6 +11,7 @@ define([
     var payload = {};
 	var eventDefinitionKey;
 	var definitionId;
+	var definitionName;
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -90,6 +91,7 @@ connection.on('requestedInteraction', function(interaction) {
 	if(interaction){
 		
 		definitionId = interaction.definitionId;
+		definitionName = interaction.name;
 		console.log(definitionId);
 	}
 });
@@ -133,6 +135,7 @@ connection.on('requestedInteraction', function(interaction) {
 		"Id": "{{Event." + eventDefinitionKey+".\"Id\"}}",
 		"AccountID":"{{Event." + eventDefinitionKey+".\"AccountId\"}}",
 		"definitionId": definitionId,
+		"definitionName":definitionName
 		}];
 
         payload['metaData'].isConfigured = true;
