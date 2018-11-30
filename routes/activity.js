@@ -247,7 +247,7 @@ exports.execute = function (req, res) {
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					JSON:decodedArgs
+					JSON:decoded.inArguments[0]
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
