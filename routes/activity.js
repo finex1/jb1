@@ -86,9 +86,11 @@ exports.execute = function (req, res) {
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+			
+			 var decodedArgs = decoded.inArguments[0];
             
             // decoded in arguments
-			var Objective_not_met = false;
+			/*var Objective_not_met = false;
 			var Objective_met = false;
 			var ExitUpdateType = false;
 			var EntryUpdateType = false;
@@ -100,7 +102,7 @@ exports.execute = function (req, res) {
 			var d = new Date();
 			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
 			
-            var decodedArgs = decoded.inArguments[0];
+           
 			if (decodedArgs.objective == "met"){
 				Objective_met = true;
 				 objective = "'Objective_met':"+ Objective_met;
@@ -119,7 +121,7 @@ exports.execute = function (req, res) {
 				ExitUpdateDate = z;
 				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
 				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
-			}
+			}																				*/
 				/*************************************************/
 	/*describe('DataExtension', function () {
 
