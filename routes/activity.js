@@ -231,7 +231,7 @@ exports.execute = function (req, res) {
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
 			}*/
-			var updateDE = [];
+			/*var updateDE = [];
 			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
 			const Name = decodedArgs.dataExtensionId;
             const props = {
@@ -244,7 +244,7 @@ exports.execute = function (req, res) {
                 assert.equal(response.res.statusCode, 200);
 				updateDE = response;
                
-            });
+            });*/
 			
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
