@@ -188,8 +188,8 @@ exports.execute = function (req, res) {
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
 			var contentType = 'application/json';
 			var payload = {
-					clientId: process.env.ID,
-					clientSecret: process.env.SECRET
+					clientId: clientId,
+					clientSecret: clientSecret
 			};
 			var accessTokenRequest = "";
 			var data = {
@@ -229,11 +229,20 @@ exports.execute = function (req, res) {
 				}	
 			}*/
 			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
+			const Name = decodedArgs.dataExtensionId;
+            const props = {
+                Key: dataExtensionRowKey
+            };
+            client.dataExtensionRow({Name, props}).post((err, response) => {
+                if (err) throw new Error(err);
+                assert.equal(response.res.statusCode, 200);
+                done();
+            });
 			
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					JSON:JSON.stringify(client)
+					JSON:payload
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
