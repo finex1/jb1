@@ -123,12 +123,17 @@ exports.execute = function (req, res) {
 				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
 			}																				/**/
 			
+			var payload = {
+					clientId: clientId, 
+					clientSecret: clientSecret
+			};
+			
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4'
 			request({
 			url:url,
 			method:"POST",
-			json: decodedArgs
+			json: payload
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
