@@ -128,12 +128,27 @@ exports.execute = function (req, res) {
 					clientSecret: clientSecret
 			};
 			
+			var updateDE = {};
+			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
+			const Name = decodedArgs.dataExtensionId;
+            const props = {
+                Id: decodedArgs.Id,
+				AccountID: decodedArgs.AccountID,
+				Journeyid: decodedArgs.definitionId
+            };
+            client.dataExtensionRow({Name, props}).post((err, response) => {
+                if (err) throw new Error(err);
+                assert.equal(response.res.statusCode, 200);
+				updateDE = response;
+               
+            });
+			
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4'
 			request({
 			url:url,
 			method:"POST",
-			json: payload
+			json: updateDE
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
