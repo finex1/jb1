@@ -127,7 +127,7 @@ exports.execute = function (req, res) {
 			
 			var updateDE = {};
 			var test = "";
-			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
+			const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin}); 
 			
 			const Name = decodedArgs.dataExtensionId;
             const props = {
