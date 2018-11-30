@@ -183,13 +183,13 @@ exports.execute = function (req, res) {
 						done();
 					});
 	******************************************************************************************/
-		/*******************************************************************************************/
+		/******************************************************************************************
 		var request = require('request');
 			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
 			var contentType = 'application/json';
 			var payload = {
-					clientId: clientId,
-					clientSecret: clientSecret
+					clientId: process.env.ID,
+					clientSecret: process.env.SECRET
 			};
 			var accessTokenRequest = "";
 			var data = {
@@ -200,7 +200,7 @@ exports.execute = function (req, res) {
 
 			request.post(data, function(error, httpResponse, body){
 				accessTokenRequest = body;
-			});
+			});																								*/
 			/*
 			if(accessTokenRequest.StatusCode == 200) {
 				var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
@@ -228,21 +228,25 @@ exports.execute = function (req, res) {
 					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
 				}	
 			}*/
+			let updateDE;
 			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
 			const Name = decodedArgs.dataExtensionId;
             const props = {
-                Key: dataExtensionRowKey
+                Id: decodedArgs.Id,
+				AccountID: decodedArgs.AccountID,
+				Journeyid: decodedArgs.definitionId
             };
             client.dataExtensionRow({Name, props}).post((err, response) => {
                 if (err) throw new Error(err);
                 assert.equal(response.res.statusCode, 200);
-                done();
+				updateDE = response;
+               
             });
 			
 			var url ='http://requestbin.fullcontact.com/10sa3c91'
 			request({url:url,
 					method:"POST",
-					JSON:payload
+					JSON:updateDE
 					}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
