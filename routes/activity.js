@@ -91,7 +91,7 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
 			
 			var request = require('request');
-			var url ='http://requestbin.fullcontact.com/1958gqu1'
+			var url ='http://httpresponder.com/testfn'
 			request({
 			url:url,
 			method:"POST",
