@@ -92,7 +92,7 @@ connection.on('requestedInteraction', function(interaction) {
 		
 		definitionId = interaction.definitionId;
 		definitionName = interaction.name;
-		console.log(definitionId);
+		console.log('>>>Request Trigger',JSON.stringify(interaction));
 	}
 });
     }
