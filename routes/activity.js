@@ -184,7 +184,7 @@ exports.execute = function (req, res) {
 					// will be delivered with 200, 400, 401, 500, etc status codes
 					// response.body === payload from response
 					// response.res === full response from request client
-					updateDE = response.body ;
+					updateDE = response.res ;
 					console.log(response);
 				})
 				.catch(err => console.log(err));
