@@ -142,7 +142,9 @@ exports.execute = function (req, res) {
                 
             });*/
 			
-			var FuelAuth = require( 'fuel-auth' );
+			
+			var getoken = function (callback) {
+				var FuelAuth = require( 'fuel-auth' );
 
 			// Required Settings
 			var myClientId     = clientId;
@@ -172,25 +174,24 @@ exports.execute = function (req, res) {
 			  
 			  force: true // I want to force a request
 			};
+						FuelAuthClient.getAccessToken(options, function(err, data) {
+						  if(err) {
+							console.log(err);
+							return;
+						  }
 
-			FuelAuthClient.getAccessToken(options, function(err, data) {
-			  if(err) {
-				console.log(err);
-				return;
-			  }
+						  callback(data.accessToken);
+						  // data.expiresIn = how long until token expiration
+						  console.log(data);
+						});
 
-			  test = data.accessToken;
-			  // data.expiresIn = how long until token expiration
-			  console.log(data);
-			});
-
-			
+			}
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
-			json: test
+			json: getoken
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
