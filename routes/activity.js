@@ -154,7 +154,8 @@ exports.execute = function (req, res) {
 				auth: {
 					// options you want passed when Fuel Auth is initialized
 					clientId: clientId,
-					clientSecret: clientSecret
+					clientSecret: clientSecret,
+					force:true
 				},
 				origin: 'https://www.exacttargetapis.com' // default --> https://www.exacttargetapis.com
 			};
@@ -164,10 +165,10 @@ exports.execute = function (req, res) {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
 				body:{
-								"keys":{
+								keys:{
 										"Id": decodedArgs.Id
 										},
-								"values":{
+								values:{
 										"AccountID": decodedArgs.AccountID,
 										"Journeyid": decodedArgs.definitionId,
 										"Reason": decodedArgs.Reason,
@@ -196,7 +197,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: RestClient
+			json: updateDE
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
