@@ -142,9 +142,7 @@ exports.execute = function (req, res) {
                 
             });*/
 			
-			
-			var getoken = function (callback) {
-				var FuelAuth = require( 'fuel-auth' );
+			var FuelAuth = require( 'fuel-auth' );
 
 			// Required Settings
 			var myClientId     = clientId;
@@ -168,35 +166,38 @@ exports.execute = function (req, res) {
 				, accessToken: accessToken
 				, refreshToken: refreshToken
 			});
+			
 			var options = {
 			  // whatever request options you want
 			  // See https://github.com/mikeal/request#requestoptions-callback
 			  
 			  force: true // I want to force a request
 			};
-						FuelAuthClient.getAccessToken(options, function(err, data) {
-						  if(err) {
-							console.log(err);
-							return;
-						  }
 
-						  callback(data.accessToken);
-						  // data.expiresIn = how long until token expiration
-						  console.log(data);
-						});
+			FuelAuthClient.getAccessToken(options, function(err, data) {
+			  if(err) {
+				console.log(err);
+				return;
+			  }
 
-			}
-			var request = require('request');
-			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
+			   var test1= data[0];
+			  // data.expiresIn = how long until token expiration
+			  console.log(data);
+			  var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
-			json: getoken
+			json: test1
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
 			  }
 			});
+			});
+
+			
+			var request = require('request');
+			
             
             logData(req);
             res.send(200, 'Execute');
