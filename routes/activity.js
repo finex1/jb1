@@ -170,9 +170,7 @@ exports.execute = function (req, res) {
 								"values":{
 										"AccountID": decodedArgs.AccountID,
 										"Journeyid": decodedArgs.definitionId,
-										
 										"Reason": decodedArgs.Reason,
-										
 										"journeytype": decodedArgs.journeytype
 										}
 								};
