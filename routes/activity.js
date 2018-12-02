@@ -166,7 +166,7 @@ exports.execute = function (req, res) {
 				headers: {}
 				// other request options
 			};
-			RestClient.post(optionss, (err, response) => {
+			RestClient.get(optionss, (err, response) => {
 					if (err) {
 						// error here
 						console.log(err);
