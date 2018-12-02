@@ -190,7 +190,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: FuelAuthClient
+			json: test
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
