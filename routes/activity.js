@@ -176,7 +176,7 @@ exports.execute = function (req, res) {
 								}
 				// other request options
 			};
-			RestClient.post(optionss, (err, response) => {
+			/*RestClient.post(optionss, (err, response) => {
 					if (err) {
 						// error here
 						console.log(err);
@@ -187,7 +187,7 @@ exports.execute = function (req, res) {
 					// response.res === full response from request client
 					console.log(response);
 					updateDE = response.res ;
-				});
+				});*/
 			
 			const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin});	
 				
