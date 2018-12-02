@@ -160,8 +160,9 @@ exports.execute = function (req, res) {
 			};
 
 			const RestClient = new FuelRest(options);
+			var upserturl = "/hub/v1/dataevents/key:"+decodedArgs.dataExtensionId+"/rowset";
 			const options = {
-				uri: "/hub/v1/dataevents/key:"+decodedArgs.dataExtensionId+"/rowset",
+				uri: upserturl,
 				headers: {},
 				body:{
 								"keys":{
