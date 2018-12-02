@@ -129,31 +129,7 @@ exports.execute = function (req, res) {
 			
 			var updateDE = {};
 			var test = "";
-			let client;
-			client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 			
-			
-			const Name = decodedArgs.Journeyid;
-            const props = {
-                Id: decodedArgs.Id
-            };
-           client.dataExtensionRow({Name, props}).post((err, response) => {
-				
-                if (err) throw new Error(err);
-               	var request = require('request');
-			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+response.res.statusCode
-			request({
-			url:url,
-			method:"POST",
-			json: response
-			}, function (error, response, body) {
-			  if (!error) {
-				console.log(body);
-			  }
-			});
-                
-			
-            });
 			
 			
 			
@@ -197,8 +173,61 @@ exports.execute = function (req, res) {
 			  
 			console.log(data);
 			});
+			
 */
-		
+		   	const FuelRest = require('fuel-rest');
+			const options = {
+				auth: {
+					// options you want passed when Fuel Auth is initialized
+					clientId: 'clientId',
+					clientSecret: 'clientSecret'
+				},
+				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
+			};
+
+			const RestClient = new FuelRest(options);
+			const optionss = {
+				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
+				headers: {},
+				body:{
+					[
+						{
+							"keys":{
+									"Id": decodedArgs.Id
+									},
+							"values":{
+									"AccountId": decodedArgs.AccountID
+									}
+						}
+					]
+				}
+				// other request options
+			};
+
+			// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
+			RestClient.post(optionss, (err, response) => {
+				if (err) {
+					// error here
+					console.log(err);
+				}
+				var request = require('request');
+				var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+response.res.statusCode
+				request({
+				url:url,
+				method:"POST",
+				json: response
+				}, function (error, response, body) {
+				  if (!error) {
+					console.log(body);
+				  }
+				});
+				// will be delivered with 200, 400, 401, 500, etc status codes
+				// response.body === payload from response
+				// response.res === full response from request client
+				console.log(response);
+			});
+			
+			
 			
             
             logData(req);
