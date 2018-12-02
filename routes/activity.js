@@ -190,14 +190,13 @@ const RestClient = new FuelRest(options);
 				headers: {},
 				body:{
 					
-						{
 							"keys":{
 									"Id": decodedArgs.Id
 									},
 							"values":{
 									"AccountId": decodedArgs.AccountID
 									}
-						}
+						
 					
 				}
 				// other request options
