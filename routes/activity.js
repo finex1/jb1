@@ -189,6 +189,16 @@ const RestClient = new FuelRest(options);
 				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
 				body:{
+					
+						{
+							"keys":{
+									"Id": decodedArgs.Id
+									},
+							"values":{
+									"AccountId": decodedArgs.AccountID
+									}
+						}
+					
 				}
 				// other request options
 			};
