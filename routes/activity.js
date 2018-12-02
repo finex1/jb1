@@ -154,7 +154,7 @@ exports.execute = function (req, res) {
 				, clientSecret: myClientSecret // required
 			});
 */
-			Initialization with extra options
+		//	Initialization with extra options
 			var authUrl      = "https://auth.exacttargetapis.com/v1/requestToken"; //this is the default
 			var accessToken  = "";
 			var refreshToken = "";
