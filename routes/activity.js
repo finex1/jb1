@@ -176,7 +176,16 @@ exports.execute = function (req, res) {
 								}
 				// other request options
 			};
-			
+			RestClient.POST(optionss)
+				.then(response => {
+					// will be delivered with 200, 400, 401, 500, etc status codes
+					// response.body === payload from response
+					// response.res === full response from request client
+					updateDE = response.res ;
+					console.log(response);
+				})
+				
+				
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
