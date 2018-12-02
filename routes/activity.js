@@ -136,7 +136,7 @@ exports.execute = function (req, res) {
             client.dataExtensionRow({Name, props}).patch((err, response) => {
 				updateDE = err;
                 if (err) throw new Error(err);
-                updateDE = response.res;
+                updateDE = JSON.stringify(response);
                 
             });
 			
