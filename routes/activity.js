@@ -188,6 +188,7 @@ const RestClient = new FuelRest(options);
 			const optionss = {
 				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
+				json:true,
 				body:{
 					
 							"keys":{
