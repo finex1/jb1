@@ -129,9 +129,27 @@ exports.execute = function (req, res) {
 			
 			var updateDE = {};
 			var test = "";
-		 let client, createdDataExtensionId;
-		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin});
-			const Name = decodedArgs.Journeyid;
+		 const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin});
+			
+			const props = {
+			  name: 'Some test campaign name',
+			  description: 'Campaign description'
+			};
+			client.campaign({props}).post((err, response) => {
+			  	var request = require('request');
+			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
+			request({
+			url:url,
+			method:"POST",
+			json: response.body
+			}, function (error, response, body) {
+			  if (!error) {
+				console.log(body);
+			  }
+			});
+			})
+			
+			/*const Name = decodedArgs.Journeyid;
             const props = {
                 Id: decodedArgs.Id
             };
@@ -140,18 +158,12 @@ exports.execute = function (req, res) {
                 if (err) throw new Error(err);
              var update = response;
                 
-				var request = require('request');
-			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
-			request({
-			url:url,
-			method:"POST",
-			json: update
-			}, function (error, response, body) {
-			  if (!error) {
-				console.log(body);
-			  }
-			});
+			
             });
+			*/
+			
+			
+			
 			
 		/*	var FuelAuth = require( 'fuel-auth' );
 
