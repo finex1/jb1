@@ -176,14 +176,19 @@ exports.execute = function (req, res) {
 								}
 				// other request options
 			};
-			RestClient.POST(optionss)
-				.then(response => {
+			RestClient.post(optionss, (err, response) => {
+					if (err) {
+						// error here
+						console.log(err);
+					}
+
 					// will be delivered with 200, 400, 401, 500, etc status codes
 					// response.body === payload from response
 					// response.res === full response from request client
-					updateDE = response.res ;
 					console.log(response);
-				})
+					updateDE = response.res ;
+				});
+			
 				
 				
 			var request = require('request');
@@ -191,7 +196,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: optionss
+			json: updateDE
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
