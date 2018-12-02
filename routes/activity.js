@@ -160,9 +160,8 @@ exports.execute = function (req, res) {
 			};
 
 			const RestClient = new FuelRest(options);
-			var upserturl = "";
 			const options = {
-				uri: upserturl,
+				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
 				body:{
 								"keys":{
@@ -174,17 +173,25 @@ exports.execute = function (req, res) {
 										"Reason": decodedArgs.Reason,
 										"journeytype": decodedArgs.journeytype
 										}
-								};
+								}
 				// other request options
 			};
-			
+			RestClient.POST(options)
+				.then(response => {
+					// will be delivered with 200, 400, 401, 500, etc status codes
+					// response.body === payload from response
+					// response.res === full response from request client
+					updateDE = response.res ;
+					console.log(response);
+				})
+				.catch(err => console.log(err));
 				
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
-			json: options
+			json: RestClient
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
