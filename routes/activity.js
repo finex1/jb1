@@ -180,9 +180,9 @@ exports.execute = function (req, res) {
 				return;
 			  }
 
-			   var test1= data[0];
+			   var test1= data;
 			  // data.expiresIn = how long until token expiration
-			  console.log(data);
+			  
 			  var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
@@ -193,6 +193,8 @@ exports.execute = function (req, res) {
 				console.log(body);
 			  }
 			});
+			
+			console.log(data);
 			});
 
 			
