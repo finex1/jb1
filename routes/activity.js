@@ -185,11 +185,7 @@ exports.execute = function (req, res) {
 			//	,				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
 			};
 const RestClient = new FuelRest(options);
-			const optionss = {
-				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
-				headers: {},
-				json:true,
-				body:{
+var jsonbody = {
 					
 							"keys":{
 									"Id": decodedArgs.Id
@@ -199,7 +195,12 @@ const RestClient = new FuelRest(options);
 									}
 						
 					
-				}
+				};
+			const optionss = {
+				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
+				headers: {},
+				json:true,
+				body:JSON.stringify(jsonbody)
 				// other request options
 			};
 					// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
