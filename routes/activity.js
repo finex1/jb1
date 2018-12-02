@@ -148,7 +148,7 @@ exports.execute = function (req, res) {
 			var payload = {
 					clientId: client, 
 					clientSecret: clientSecret
-			};*/
+			};
 			const FuelRest = require('fuel-rest');
 			const options = {
 				auth: {
@@ -175,7 +175,7 @@ exports.execute = function (req, res) {
 										}
 								}
 				// other request options
-			};
+			};*/
 			/*RestClient.post(optionss, (err, response) => {
 					if (err) {
 						// error here
