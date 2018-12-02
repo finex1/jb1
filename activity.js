@@ -88,7 +88,9 @@ exports.execute = function (req, res) {
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
             // decoded in arguments
-			var Objective_not_met = false;
+            var decodedArgs = decoded.inArguments[0];
+			
+			/**/var Objective_not_met = false;
 			var Objective_met = false;
 			var ExitUpdateType = false;
 			var EntryUpdateType = false;
@@ -100,7 +102,7 @@ exports.execute = function (req, res) {
 			var d = new Date();
 			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
 			
-            var decodedArgs = decoded.inArguments[0];
+           
 			if (decodedArgs.objective == "met"){
 				Objective_met = true;
 				 objective = "'Objective_met':"+ Objective_met;
@@ -119,153 +121,45 @@ exports.execute = function (req, res) {
 				ExitUpdateDate = z;
 				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
 				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
-			}
-				/*************************************************/
-	/*describe('DataExtension', function () {
-
-			this.timeout(10000);
-			let client, createdDataExtensionId;
-			createdDataExtensionId = "testjourneylog";
-
-			before(() => {
-				client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
-			});
-
+			}																				/**/
 			
-
-			describe('Get', () => {
-				const props = ['CustomerKey'];
-				it('should get it if createdDataExtensionId is passed', done => {
-					const filter = {
-						leftOperand: 'CustomerKey',
-						operator: 'equals',
-						rightOperand: createdDataExtensionId
-					};
-					client.dataExtension({props, filter}).get((err, response) => {
-						if (err) throw new Error(err);
-						assert.equal(response.res.statusCode, 200);
-						assert.equal(response.body.Results.length, 1);
-						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
-
-						done();
-					});
-				});
-
-				it('should error 404 if random id is passed', done => {
-					const filter = {
-						leftOperand: 'CustomerKey',
-						operator: 'equals',
-						rightOperand: createdDataExtensionId
-					};
-					client.dataExtension({props, filter}).get((err, response) => {
-						if (err) throw new Error(err);
-						assert.equal(response.body.Results.length, 0);
-						done();
-					});
-				});
-			});
-
-	});
-	const client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
-			const createdDataExtensionId = "testjourneylog";
-			var Args 
-				const filter = {
-						leftOperand: 'CustomerKey',
-						operator: 'equals',
-						rightOperand: createdDataExtensionId
-					};
-					client.dataExtension({props, filter}).get((err, response) => {
-						if (err) throw new Error(err);
-						assert.equal(response.res.statusCode, 200);
-						assert.equal(response.body.Results.length, 1);
-						assert.equal(response.body.Results[0].CustomerKey, createdDataExtensionId);
-						Args   = response.body.Results.length
-						done();
-					});
-	******************************************************************************************/
-		var request = require('request');
-		/******************************************************************************************
-		
-			var Authurl = 'https://auth.exacttargetapis.com/v1/requestToken';
-			var contentType = 'application/json';
-			var payload = {
-					clientId: process.env.ID,
-					clientSecret: process.env.SECRET
-			};
-			var accessTokenRequest = "";
-			var data = {
-				url: Authurl,
-				json: true,
-				body: payload
-			}
-
-			request.post(data, function(error, httpResponse, body){
-				accessTokenRequest = body;
-			});																								*/
-			/*
-			if(accessTokenRequest.StatusCode == 200) {
-				var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
-				var accessToken = tokenResponse.accessToken;	
-				var updateDE = {};
-				if (accessToken != '' || accessToken != 'undefined'){
-					var APIurl = 'https://www.exacttargetapis.com//hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset';
-					var contentType = 'application/json';
-					var payload = [ {
-								"keys":{
-										"Id": decodedArgs.Id
-										},
-								"values":{
-										"AccountID": decodedArgs.AccountID,
-										"Journeyid": decodedArgs.definitionId,
-										objective,
-										"Reason": decodedArgs.Reason,
-										UpdateType,
-										UpdateDate,
-										"journeytype": decodedArgs.journeytype
-										}
-								}];
-					var headerNames = ["Authorization"];
-					var headerValues = ["Bearer "+accessToken];
-					 updateDE = HTTP.Post(APIurl, contentType, JSON.stringify(payload), headerNames, headerValues);			
-				}	
-			}*/
-			let updateDE;
-			const client = new ET_Client(process.env.ID, process.env.SECRET, null, {origin, authOrigin, globalReqOptions});
-			const Name = decodedArgs.dataExtensionId;
+			
+			
+			var updateDE = {};
+			var test = "";
+		 let client, createdDataExtensionId;
+		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
+			const Name = decodedArgs.Journeyid;
             const props = {
-                Id: decodedArgs.Id,
-				AccountID: decodedArgs.AccountID,
-				Journeyid: decodedArgs.definitionId
+                Id: decodedArgs.Id
             };
-            client.dataExtensionRow({Name, props}).post((err, response) => {
+            client.dataExtensionRow({Name, props}).patch((err, response) => {
+				updateDE = err;
                 if (err) throw new Error(err);
-                assert.equal(response.res.statusCode, 200);
-				updateDE = response;
-               
+                updateDE = JSON.stringify(response);
+                
             });
 			
-			var url ='http://requestbin.fullcontact.com/10sa3c91'
-			request({url:url,
-					method:"POST",
-					JSON:updateDE
-					}, function (error, response, body) {
+			var request = require('request');
+			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
+			request({
+			url:url,
+			method:"POST",
+			json: client
+			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
 			  }
 			});
-			
+            
             logData(req);
             res.send(200, 'Execute');
-			
-/*******************************************************************************************/	
         } else {
             console.error('inArguments invalid.');
             return res.status(400).end();
         }
     });
 };
-
-
 /*
  * POST Handler for /publish/ route of Activity.
  */
