@@ -204,28 +204,7 @@ exports.execute = function (req, res) {
 				// other request options
 			};
 
-			// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
-			RestClient.post(optionss, (err, response) => {
-				if (err) {
-					// error here
-					console.log(err);
-				}
-				var request = require('request');
-				var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+response.res.statusCode
-				request({
-				url:url,
-				method:"POST",
-				json: response
-				}, function (error, response, body) {
-				  if (!error) {
-					console.log(body);
-				  }
-				});
-				// will be delivered with 200, 400, 401, 500, etc status codes
-				// response.body === payload from response
-				// response.res === full response from request client
-				console.log(response);
-			});
+	
 			
 			
 			
