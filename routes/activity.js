@@ -7,6 +7,7 @@ const ET_Client = require('../lib/ET_Client');
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
+const ET_Client = require(Path.join(__dirname, '..', 'lib','ET_Client.js'));
 var util = require('util');
 var http = require('https');
 
@@ -145,7 +146,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: updateDE
+			json: client
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
