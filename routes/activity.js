@@ -129,7 +129,17 @@ exports.execute = function (req, res) {
 			var test = "";
 		 let client, createdDataExtensionId;
 		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
-				
+			const Name = decodedArgs.Journeyid;
+            const props = {
+                Key: dataExtensionRowKey
+            };
+            client.dataExtensionRow({Name, props}).post((err, response) => {
+				updateDE = err;
+                if (err) throw new Error(err);
+                updateDE = response.res;
+                
+            });
+			
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
