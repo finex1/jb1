@@ -166,6 +166,24 @@ exports.execute = function (req, res) {
 				, accessToken: accessToken
 				, refreshToken: refreshToken
 			});
+			var options = {
+			  // whatever request options you want
+			  // See https://github.com/mikeal/request#requestoptions-callback
+			  
+			  force: true // I want to force a request
+			};
+
+			FuelAuthClient.getAccessToken(options, function(err, data) {
+			  if(err) {
+				console.log(err);
+				return;
+			  }
+
+			  test = data.accessToken;
+			  // data.expiresIn = how long until token expiration
+			  console.log(data);
+			});
+
 			
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
