@@ -187,7 +187,9 @@ exports.execute = function (req, res) {
 const RestClient = new FuelRest(options);
 			const optionss = {
 				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
-				headers: {}
+				headers: {},
+				body:{
+				}
 				// other request options
 			};
 			
