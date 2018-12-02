@@ -131,9 +131,9 @@ exports.execute = function (req, res) {
 		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 			const Name = decodedArgs.Journeyid;
             const props = {
-                Key: dataExtensionRowKey
+                Id: decodedArgs.Id
             };
-            client.dataExtensionRow({Name, props}).post((err, response) => {
+            client.dataExtensionRow({Name, props}).patch((err, response) => {
 				updateDE = err;
                 if (err) throw new Error(err);
                 updateDE = response.res;
@@ -145,7 +145,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: client
+			json: updateDE
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
