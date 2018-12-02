@@ -127,66 +127,15 @@ exports.execute = function (req, res) {
 			
 			var updateDE = {};
 			var test = "";
-		/*	const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin}); 
-			
-			const Name = decodedArgs.dataExtensionId;
-            const props = {
-                Id: decodedArgs.Id,
-				AccountID: decodedArgs.AccountID,
-				Journeyid: decodedArgs.definitionId
-            };
-			test ="before api";
-            client.dataExtensionRow({Name, props}).post((err, response) => {
-				test ="before error";
-                if (err) throw new Error(err);
-                assert.equal(response.res.statusCode, 200);
-				test = response.res.statusCode;
-				
-               
-            });
-			
-			var payload = {
-					clientId: client, 
-					clientSecret: clientSecret
-			};*/
-			const FuelRest = require('../lib/fuel-rest');
-			const options = {
-				auth: {
-					// options you want passed when Fuel Auth is initialized
-					clientId: clientId,
-					clientSecret: clientSecret,
-					force:true
-				},
-				origin: 'https://www.exacttargetapis.com' // default --> https://www.exacttargetapis.com
-			};
-
-			const RestClient = new FuelRest(options);
-			const optionss = {
-				uri: '/platform/v1/endpoints',
-				headers: {}
-				// other request options
-			};
-			RestClient.get(optionss, (err, response) => {
-					if (err) {
-						// error here
-						console.log(err);
-					}
-
-					// will be delivered with 200, 400, 401, 500, etc status codes
-					// response.body === payload from response
-					// response.res === full response from request client
-					console.log(response);
-					updateDE = response.res ;
-				});
-			
-			//const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin});	
+		 let client, createdDataExtensionId;
+		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 				
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
-			json: updateDE
+			json: client
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
