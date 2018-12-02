@@ -135,10 +135,10 @@ exports.execute = function (req, res) {
             const props = {
                 Id: decodedArgs.Id
             };
-          updateDE =  client.dataExtensionRow({Name, props}).post((err, response) => {
+           client.dataExtensionRow({Name, props}).post((err, response) => {
 				
                 if (err) throw new Error(err);
-             //   updateDE = JSON.stringify(response);
+             updateDE = JSON.stringify(response);
                 
             });
 			
