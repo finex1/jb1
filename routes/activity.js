@@ -191,7 +191,7 @@ exports.execute = function (req, res) {
 			request({
 			url:url,
 			method:"POST",
-			json: RestClient
+			json: updateDE
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
