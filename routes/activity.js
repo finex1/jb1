@@ -184,7 +184,13 @@ exports.execute = function (req, res) {
 				}
 			//	,				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
 			};
-
+const RestClient = new FuelRest(options);
+			const optionss = {
+				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
+				headers: {}
+				// other request options
+			};
+			
 			
 
 	
