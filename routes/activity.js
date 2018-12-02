@@ -129,38 +129,32 @@ exports.execute = function (req, res) {
 			
 			var updateDE = {};
 			var test = "";
-		 const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin});
+			let client;
+			client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
 			
-			const props = {
-			  name: 'Some test campaign name',
-			  description: 'Campaign description'
-			};
-			client.campaign({props}).post((err, response) => {
-			  	var request = require('request');
-			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
-			request({
-			url:url,
-			method:"POST",
-			json: err
-			}, function (error, response, body) {
-			  if (!error) {
-				console.log(body);
-			  }
-			});
-			})
 			
-			/*const Name = decodedArgs.Journeyid;
+			const Name = decodedArgs.Journeyid;
             const props = {
                 Id: decodedArgs.Id
             };
            client.dataExtensionRow({Name, props}).post((err, response) => {
 				
                 if (err) throw new Error(err);
-             var update = response;
+               	var request = require('request');
+			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+response.res.statusCode
+			request({
+			url:url,
+			method:"POST",
+			json: response
+			}, function (error, response, body) {
+			  if (!error) {
+				console.log(body);
+			  }
+			});
                 
 			
             });
-			*/
+			
 			
 			
 			
@@ -204,7 +198,17 @@ exports.execute = function (req, res) {
 			console.log(data);
 			});
 */
-			
+			  	var request = require('request');
+			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
+			request({
+			url:url,
+			method:"POST",
+			json: err
+			}, function (error, response, body) {
+			  if (!error) {
+				console.log(body);
+			  }
+			});
 			
             
             logData(req);
