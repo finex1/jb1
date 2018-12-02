@@ -130,7 +130,7 @@ exports.execute = function (req, res) {
 			var updateDE = {};
 			var test = "";
 		 let client, createdDataExtensionId;
-		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin, globalReqOptions});
+		 client = new ET_Client(clientId, clientSecret, null, {origin, authOrigin});
 			const Name = decodedArgs.Journeyid;
             const props = {
                 Id: decodedArgs.Id
