@@ -6,8 +6,9 @@ const ET_Client = require('../lib/ET_Client');
 
 // Deps
 const Path = require('path');
+const Path2 = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
-const ET_Client = require(Path.join(__dirname, '..', 'lib','ET_Client.js'));
+const ET_Client = require(Path2.join(__dirname, '..', 'lib','ET_Client.js'));
 var util = require('util');
 var http = require('https');
 
