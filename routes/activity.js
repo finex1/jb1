@@ -161,8 +161,19 @@ exports.execute = function (req, res) {
 
 			const RestClient = new FuelRest(options);
 			const options = {
-				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
-				headers: {}
+				uri: "/hub/v1/dataevents/key:"+decodedArgs.dataExtensionId+"/rowset",
+				headers: {},
+				body:{
+								"keys":{
+										"Id": decodedArgs.Id
+										},
+								"values":{
+										"AccountID": decodedArgs.AccountID,
+										"Journeyid": decodedArgs.definitionId,
+										"Reason": decodedArgs.Reason,
+										"journeytype": decodedArgs.journeytype
+										}
+								};
 				// other request options
 			};
 			
