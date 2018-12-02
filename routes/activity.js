@@ -148,8 +148,8 @@ exports.execute = function (req, res) {
 			var payload = {
 					clientId: client, 
 					clientSecret: clientSecret
-			};
-			const FuelRest = require('fuel-rest');
+			};*/
+			const FuelRest = require('../lib/fuel-rest');
 			const options = {
 				auth: {
 					// options you want passed when Fuel Auth is initialized
@@ -175,8 +175,8 @@ exports.execute = function (req, res) {
 										}
 								}
 				// other request options
-			};*/
-			/*RestClient.post(optionss, (err, response) => {
+			};
+			RestClient.post(optionss, (err, response) => {
 					if (err) {
 						// error here
 						console.log(err);
@@ -187,16 +187,16 @@ exports.execute = function (req, res) {
 					// response.res === full response from request client
 					console.log(response);
 					updateDE = response.res ;
-				});*/
+				});
 			
-			const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin});	
+			//const client = new ET_Client(clientId, clientSecret, stack, {origin, authOrigin, soapOrigin});	
 				
 			var request = require('request');
 			var url ='https://webhook.site/fc3cd16a-1950-4329-ba25-8080421eadf4?fieldname='+test
 			request({
 			url:url,
 			method:"POST",
-			json: client
+			json: RestClient
 			}, function (error, response, body) {
 			  if (!error) {
 				console.log(body);
