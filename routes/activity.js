@@ -206,7 +206,7 @@ exports.execute = function (req, res) {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
 				json: true,
-				body:JSON.stringify(o)
+				body:o
 				
 				
 				// other request options
