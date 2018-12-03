@@ -191,7 +191,7 @@ exports.execute = function (req, res) {
 			var key = 'keys';
 			var val = 'values';
 			o[key] = [];
-			o[val] =[]
+			o[val] =[];
 			var datakey = {
 				Id:decodedArgs.Id
 			};
