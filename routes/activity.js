@@ -188,8 +188,9 @@ exports.execute = function (req, res) {
 			var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs.AccountID}};
 			const optionss = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
-				headers: {body:'['+JSON.stringify(jsonbody)+']'},
-				json: true
+				headers: {},
+				json: true,
+				body:'['+JSON.stringify(jsonbody)+']'
 				
 				
 				// other request options
