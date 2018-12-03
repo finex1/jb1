@@ -189,11 +189,7 @@ var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs
 			const optionss = {
 				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
-				json:true,
-				 multipart: [
-				 {	'content-type': 'application/json',
-					 body: JSON.stringify(jsonbody)}
-				 ]
+				json:jsonbody
 				
 				// other request options
 			};
