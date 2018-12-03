@@ -186,7 +186,7 @@ exports.execute = function (req, res) {
 			};
 const RestClient = new FuelRest(options);
 var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
-			const optionss = {
+			 options = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rows/Id:'+decodedArgs.Id,
 				headers: {},
 				json:JSON.stringify(jsonbody)
@@ -194,7 +194,7 @@ var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
 				// other request options
 			};
 					// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
-			RestClient.put(optionss, (err, response) => {
+			RestClient.put(options, (err, response) => {
 				if (err) {
 					// error here
 					console.log(err);
