@@ -182,7 +182,7 @@ exports.execute = function (req, res) {
 					clientId: clientId,
 					clientSecret: clientSecret
 				}
-			//	,				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
+				, origin: 'https://mcdt9rqgklkwzwbsk1xbx4nfhck1.rest.marketingcloudapis.com/' // default --> https://www.exacttargetapis.com
 			};
 const RestClient = new FuelRest(options);
 var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
