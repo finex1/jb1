@@ -185,17 +185,7 @@ exports.execute = function (req, res) {
 			//	,				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
 			};
 const RestClient = new FuelRest(options);
-var jsonbody = {
-					
-							"keys":{
-									"Id": decodedArgs.Id
-									},
-							"values":{
-									"AccountId": decodedArgs.AccountID
-									}
-						
-					
-				};
+var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs.AccountID}};
 			const optionss = {
 				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
