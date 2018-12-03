@@ -92,8 +92,8 @@ exports.execute = function (req, res) {
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
 			
-			/**/var Objective_not_met = false;
-			var Objective_met = false;
+			/**/var Objective_not_met;
+			var Objective_met ;
 			var ExitUpdateType;
 			var EntryUpdateType;
 			var EntryUpdateDate;
