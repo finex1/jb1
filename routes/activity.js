@@ -196,7 +196,13 @@ exports.execute = function (req, res) {
 			var datakey = { 
 				Id:decodedArgs.Id
 			};
-			var datavalues = {AccountId:decodedArgs.AccountID};
+			var datavalues = {	AccountId:decodedArgs.AccountID,
+								Journeyid: decodedArgs.definitionId,
+								objective,
+								Reason: decodedArgs.Reason,
+								UpdateType,
+								UpdateDate,
+								journeytype: decodedArgs.journeytype};
 			vals = {"keys":datakey,
 					"values":datavalues};
 			//vals = {"values":datavalues};
