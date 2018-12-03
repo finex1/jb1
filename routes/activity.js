@@ -190,7 +190,7 @@ var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs
 				uri: '/hub/v1/dataeventsasync/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
 				json:true,
-				body:jsonbody
+				body:'[' +jsonbody+ ']'
 				// other request options
 			};
 					// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
@@ -204,7 +204,7 @@ var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs
 				request({
 				url:url,
 				method:"POST",
-				json: jsonbody
+				json: response
 				}, function (error, response, body) {
 				  if (!error) {
 					console.log(body);
