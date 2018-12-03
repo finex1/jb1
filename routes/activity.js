@@ -201,7 +201,7 @@ exports.execute = function (req, res) {
 								Objective_met: Objective_met,
 								Objective_not_met: Objective_not_met,
 								Reason: decodedArgs.Reason,
-								EntryUpdateType: EntryUpdateType
+								EntryUpdateType: EntryUpdateType,
 								EntryUpdateDate: EntryUpdateDate,
 								ExitUpdateType: ExitUpdateType,
 								ExitUpdateDate: ExitUpdateDate,
