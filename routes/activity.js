@@ -186,11 +186,24 @@ exports.execute = function (req, res) {
 			};
 			const RestClient = new FuelRest(options);
 			var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs.AccountID}};
+			
+			var o = {} // empty Object
+			var key = 'keys';
+			var val = 'values';
+			o[key] = [];
+			o[val] =[]
+			var datakey = {
+				Id:decodedArgs.Id
+			};
+			var datavalues = {AccountId:decodedArgs.AccountID};
+			o[key].push(datakey);
+			o.[val].push(datavalues);
+			
 			const optionss = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
 				headers: {},
 				json: true,
-				body:'['+JSON.stringify(jsonbody)+']'
+				body:JSON.stringify(o)
 				
 				
 				// other request options
