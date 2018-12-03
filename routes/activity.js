@@ -182,19 +182,19 @@ exports.execute = function (req, res) {
 					clientId: clientId,
 					clientSecret: clientSecret
 				}
-				, origin: 'https://mcdt9rqgklkwzwbsk1xbx4nfhck1.rest.marketingcloudapis.com/' // default --> https://www.exacttargetapis.com
+			//	,				origin: 'https://alternate.rest.endpoint.com' // default --> https://www.exacttargetapis.com
 			};
 const RestClient = new FuelRest(options);
-var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
-			const  optionss = {
-				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rows/Id:'+decodedArgs.Id,
+var jsonbody = {"keys":{"Id": decodedArgs.Id},"values":{"AccountId": decodedArgs.AccountID}};
+			const optionss = {
+				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rows/Id:'+decodedArgs.Id
 				headers: {},
-				json:true,
-				body:JSON.stringify(jsonbody)
+				json:JSON.stringify(jsonbody)
+				
 				// other request options
 			};
 					// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
-			RestClient.put(optionss, (err, response) => {
+			RestClient.post(optionss, (err, response) => {
 				if (err) {
 					// error here
 					console.log(err);
