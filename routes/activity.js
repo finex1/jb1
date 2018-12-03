@@ -186,7 +186,7 @@ exports.execute = function (req, res) {
 			};
 const RestClient = new FuelRest(options);
 var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
-			 options = {
+			const  options = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rows/Id:'+decodedArgs.Id,
 				headers: {},
 				json:JSON.stringify(jsonbody)
