@@ -197,9 +197,9 @@ exports.execute = function (req, res) {
 				Id:decodedArgs.Id
 			};
 			var datavalues = {AccountId:decodedArgs.AccountID};
-			keys = {"keys":datakey};
-			vals = {"values":datavalues};
-			o.push(keys);
+			vals = {"keys":datakey,
+					"values":datavalues};
+			//vals = {"values":datavalues};
 			o.push(vals);
 			
 			const optionss = {
