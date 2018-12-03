@@ -97,32 +97,32 @@ exports.execute = function (req, res) {
 			var ExitUpdateType = false;
 			var EntryUpdateType = false;
 			var EntryUpdateDate = "";
-			var UpdateDate ="";
-			var UpdateType ="";
+			var UpdateDate ={};
+			var UpdateType ={};
 			var ExitUpdateDate = "";
-			var objective = "";
+			var objective = {};
 			var d = new Date();
 			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
 			
            
 			if (decodedArgs.objective == "met"){
 				Objective_met = true;
-				 objective = "'Objective_met':"+ Objective_met;
+				 objective = {Objective_met: Objective_met};
 			}else if(decodedArgs.objective == "notmet"){
 				Objective_not_met = true;
-				objective = "'Objective_not_met':"+ Objective_not_met;
+				objective = {Objective_not_met: Objective_not_met};
 			}
 		
 			if (decodedArgs.entrytype == "entry"){
 				EntryUpdateType = true;
 				EntryUpdateDate = z;
-				UpdateType = "'EntryUpdateType':"+ EntryUpdateType;
-				UpdateDate = "'EntryUpdateDate':"+ EntryUpdateDate;
+				UpdateType = {EntryUpdateType: EntryUpdateType};
+				UpdateDate = {EntryUpdateDate: EntryUpdateDate};
 			}else if(decodedArgs.entrytype == "exit"){
 				ExitUpdateType = true;
 				ExitUpdateDate = z;
-				UpdateType = "'ExitUpdateType':"+ ExitUpdateType;
-				UpdateDate = "'ExitUpdateDate':"+ ExitUpdateDate;
+				UpdateType = {ExitUpdateType: ExitUpdateType};
+				UpdateDate = {ExitUpdateDate: ExitUpdateDate};
 			}																				/**/
 			
 			
