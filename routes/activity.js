@@ -189,7 +189,7 @@ var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
 			const  optionss = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rows/Id:'+decodedArgs.Id,
 				headers: {},
-				json:true
+				json:true,
 				body:JSON.stringify(jsonbody)
 				// other request options
 			};
