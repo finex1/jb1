@@ -185,12 +185,12 @@ exports.execute = function (req, res) {
 				, origin: 'https://mcdt9rqgklkwzwbsk1xbx4nfhck1.rest.marketingcloudapis.com/' // default --> https://www.exacttargetapis.com
 			};
 const RestClient = new FuelRest(options);
-//var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
+var jsonbody = {"values":{"AccountId": decodedArgs.AccountID}};
 			const  optionss = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rows/Id:'+decodedArgs.Id,
 				headers: {},
 				json:true
-				
+				body:JSON.stringify(jsonbody)
 				// other request options
 			};
 					// CANNOT USE BOTH CALLBACKS AND PROMISES TOGETHER
