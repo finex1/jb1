@@ -197,7 +197,7 @@ exports.execute = function (req, res) {
 			};
 			var datavalues = {AccountId:decodedArgs.AccountID};
 			o[key].push(datakey);
-			o.[val].push(datavalues);
+			o[val].push(datavalues);
 			
 			const optionss = {
 				uri: '/hub/v1/dataevents/key:'+decodedArgs.dataExtensionId+'/rowset',
