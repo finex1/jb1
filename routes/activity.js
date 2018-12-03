@@ -198,10 +198,13 @@ exports.execute = function (req, res) {
 			};
 			var datavalues = {	AccountId:decodedArgs.AccountID,
 								Journeyid: decodedArgs.definitionId,
-								objective,
+								Objective_met: Objective_met,
+								Objective_not_met: Objective_not_met,
 								Reason: decodedArgs.Reason,
-								UpdateType,
-								UpdateDate,
+								EntryUpdateType: EntryUpdateType
+								EntryUpdateDate: EntryUpdateDate,
+								ExitUpdateType: ExitUpdateType,
+								ExitUpdateDate: ExitUpdateDate,
 								journeytype: decodedArgs.journeytype};
 			vals = {"keys":datakey,
 					"values":datavalues};
