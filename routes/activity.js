@@ -94,12 +94,12 @@ exports.execute = function (req, res) {
 			
 			/**/var Objective_not_met = false;
 			var Objective_met = false;
-			var ExitUpdateType = false;
-			var EntryUpdateType = false;
-			var EntryUpdateDate = "";
+			var ExitUpdateType;
+			var EntryUpdateType;
+			var EntryUpdateDate;
 			var UpdateDate ={};
 			var UpdateType ={};
-			var ExitUpdateDate = "";
+			var ExitUpdateDate;
 			var objective = {};
 			var d = new Date();
 			var z = d.toLocaleDateString() +" "+ d.toLocaleTimeString();
@@ -200,7 +200,7 @@ exports.execute = function (req, res) {
 								Journeyid: decodedArgs.definitionId,
 								Objective_met: Objective_met,
 								Objective_not_met: Objective_not_met,
-								Reason: decodedArgs.Reason,
+								Reason: decodedArgs.reason,
 								EntryUpdateType: EntryUpdateType,
 								EntryUpdateDate: EntryUpdateDate,
 								ExitUpdateType: ExitUpdateType,
