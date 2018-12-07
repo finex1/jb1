@@ -126,7 +126,11 @@ exports.execute = function (req, res) {
 			}																				/**/
 			
 			
-			
+			var i;
+			var tags;
+				for (i = 0; i < decodedArgs.tags.length; i++) {
+				  tags += decodedArgs.tage[i].name + ",";
+				}
 			var updateDE = {};
 			var test = "";
 			
@@ -196,8 +200,9 @@ exports.execute = function (req, res) {
 			var datakey = { 
 				Id:decodedArgs.Id
 			};
+			
 			var datavalues = {	AccountId:decodedArgs.AccountID,
-								Journeyid: decodedArgs.definitionId,
+								Journeyid: decodedArgs.JourneyId,
 								Objective_met: Objective_met,
 								Objective_not_met: Objective_not_met,
 								Reason: decodedArgs.reason,
@@ -205,7 +210,9 @@ exports.execute = function (req, res) {
 								EntryUpdateDate: EntryUpdateDate,
 								ExitUpdateType: ExitUpdateType,
 								ExitUpdateDate: ExitUpdateDate,
-								journeytype: decodedArgs.journeytype};
+								journeytype: decodedArgs.journeytype,
+								journeytags:tags,
+								journeyname:decodedArgs.JourneyName};
 			vals = {"keys":datakey,
 					"values":datavalues};
 			//vals = {"values":datavalues};
