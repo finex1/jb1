@@ -9,9 +9,10 @@ define([
     var authTokens = {};
 	var schemas ={};
     var payload = {};
+	var tags = {};
 	var eventDefinitionKey;
-	var definitionId;
-	var definitionName;
+	var journeyId;
+	var journeyName;
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -90,9 +91,11 @@ function(eventDefinitionModel) {
 connection.on('requestedInteraction', function(interaction) { 
 	if(interaction){
 		
-		definitionId = interaction.definitionId;
-		definitionName = interaction.name;
-		console.log('>>>Request Trigger',JSON.stringify(interaction));
+		journeyId = interaction.id;
+		tags = interaction.tags;
+		journeyName = interaction.name;
+		console.log('>>>Request Interaction',JSON.stringify(interaction));
+		console.log('>>>Request Interactiontag',JSON.stringify(tags));
 	}
 });
     }
@@ -134,8 +137,9 @@ connection.on('requestedInteraction', function(interaction) {
 		"emailAddress": "{{Contact.Default.Email}}",
 		"Id": "{{Event." + eventDefinitionKey+".\"Id\"}}",
 		"AccountID":"{{Event." + eventDefinitionKey+".\"AccountId\"}}",
-		"definitionId": definitionId,
-		"definitionName":definitionName
+		"JourneyId": journeyId,
+		"JourneyName":journeyName,
+		"Tags":tags
 		}];
 
         payload['metaData'].isConfigured = true;
