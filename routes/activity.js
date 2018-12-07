@@ -129,7 +129,7 @@ exports.execute = function (req, res) {
 			var i;
 			var tags;
 				for (i = 0; i < decodedArgs.tags.length; i++) {
-				  tags += decodedArgs.tage[i].name + ",";
+				  tags += decodedArgs.tags[i].name + ",";
 				}
 			var updateDE = {};
 			var test = "";
