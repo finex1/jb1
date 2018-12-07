@@ -127,7 +127,7 @@ exports.execute = function (req, res) {
 			
 			
 			var i;
-			var tags;
+			var tags="";
 				for (i = 0; i < decodedArgs.Tags.length; i++) {
 				  tags += decodedArgs.Tags[i].name + ",";
 				}
