@@ -129,7 +129,11 @@ exports.execute = function (req, res) {
 			var i;
 			var tags="";
 				for (i = 0; i < decodedArgs.Tags.length; i++) {
+					if (i == decodedArgs.Tags.length){
+						tags += decodedArgs.Tags[i].name;
+					}else{
 				  tags += decodedArgs.Tags[i].name + ",";
+					}
 				}
 			var updateDE = {};
 			var test = "";
