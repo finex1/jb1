@@ -128,8 +128,8 @@ exports.execute = function (req, res) {
 			
 			var i;
 			var tags;
-				for (i = 0; i < decodedArgs.tags.length; i++) {
-				  tags += decodedArgs.tags[i].name + ",";
+				for (i = 0; i < decodedArgs.Tags.length; i++) {
+				  tags += decodedArgs.Tags[i].name + ",";
 				}
 			var updateDE = {};
 			var test = "";
@@ -139,7 +139,7 @@ exports.execute = function (req, res) {
 				request({
 				url:url,
 				method:"POST",
-				json: decodedArgs.tags
+				json: decodedArgs.Tags
 				}, function (error, response, body) {
 				  if (!error) {
 					console.log(body);
